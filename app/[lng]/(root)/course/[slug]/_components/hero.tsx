@@ -96,8 +96,7 @@ function Hero(course: ICourse) {
 				{loading && <FillLoading />}
 				<Button
 					size={'icon'}
-					className='absolute left-1/2 top-1/2 size-14 -translate-x-1/2 -translate-y-1/2'
-					rounded={'full'}
+					className='absolute left-1/2 top-1/2 size-14 -translate-x-1/2 -translate-y-1/2 rounded-full'
 					variant={'secondary'}
 					onClick={onHandler}
 					disabled={loading}

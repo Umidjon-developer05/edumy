@@ -25,6 +25,13 @@ const buttonVariants = cva(
 				lg: 'h-11 rounded-md px-8',
 				icon: 'size-10',
 			},
+			rounded: {
+				default: 'rounded-md',
+				sm: 'rounded-sm',
+				md: 'rounded-md',
+				lg: 'rounded-lg',
+				full: 'rounded-full',
+			},
 		},
 		defaultVariants: {
 			variant: 'default',

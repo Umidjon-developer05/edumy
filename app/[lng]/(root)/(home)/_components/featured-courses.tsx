@@ -50,9 +50,10 @@ function FeaturedCourses({ courses }: Props) {
 					{filterCourses.map(item => (
 						<Button
 							key={item.name}
-							rounded={'full'}
 							variant={item.name === 'all' ? 'secondary' : 'ghost'}
-							className={cn('font-medium max-md:w-full max-md:bg-secondary')}
+							className={cn(
+								'font-medium max-md:w-full max-md:bg-secondary rounded-full'
+							)}
 							onClick={() => onUpdateParams(item.name)}
 						>
 							{t(item.label)}

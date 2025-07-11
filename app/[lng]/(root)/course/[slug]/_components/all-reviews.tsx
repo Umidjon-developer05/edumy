@@ -54,8 +54,7 @@ function AllReviews(course: ICourse) {
 		<>
 			<Button
 				size={'lg'}
-				rounded={'full'}
-				className='mx-auto mt-6 flex justify-center'
+				className='mx-auto mt-6 flex justify-center rounded-full'
 				onClick={onOpenReviews}
 				disabled={loading}
 			>
@@ -99,8 +98,7 @@ function AllReviews(course: ICourse) {
 							{course.reviewCount > count && (
 								<Button
 									size={'lg'}
-									rounded={'full'}
-									className='mx-auto mt-6 flex justify-center'
+									className='mx-auto mt-6 flex justify-center rounded-full'
 									onClick={onLoadMore}
 									disabled={loading}
 								>

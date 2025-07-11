@@ -26,12 +26,12 @@ function Hero() {
 					<p className='text-muted-foreground'>{t('heroDescription')}</p>
 					<div className='flex gap-4'>
 						<Link href={'/courses'}>
-							<Button variant={'outline'} size={'lg'} rounded={'full'}>
+							<Button variant={'outline'} size={'lg'} className='rounded-full'>
 								{t('findCourses')}
 							</Button>
 						</Link>
 						<Link href={'/courses'}>
-							<Button size={'lg'} rounded={'full'}>
+							<Button size={'lg'} className='rounded-full'>
 								{t('blogs')}
 							</Button>
 						</Link>
