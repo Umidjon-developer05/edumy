@@ -198,13 +198,18 @@ export const getAllCourses = async (params: GetAllCoursesParams) => {
 	try {
 		await connectToDatabase()
 		const { searchQuery, filter, page = 1, pageSize = 6, instructor } = params
-
+		console.log(instructor)
 		const skipAmount = (page - 1) * pageSize
-
 		const query: FilterQuery<typeof Course> = {}
 
 		if (searchQuery) {
 			query.$or = [{ title: { $regex: new RegExp(searchQuery, 'i') } }]
+		}
+
+		if (instructor) {
+			query.instructor = instructor
+		} else {
+			query.instructor = { $ne: null } // ✅ instructor mavjud bo‘lganlarni olish
 		}
 
 		let sortOptions = {}
@@ -247,7 +252,7 @@ export const getAllCourses = async (params: GetAllCoursesParams) => {
 				break
 		}
 
-		const courses = await Course.find(query, { instructor })
+		const courses = await Course.find(query)
 			.select('previewImage title slug _id oldPrice currentPrice instructor')
 			.populate({
 				path: 'instructor',
