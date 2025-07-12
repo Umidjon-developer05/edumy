@@ -6,7 +6,7 @@ import CustomImage from '../shared/custom-image'
 
 function CourseCardBanner(course: ICourse) {
 	return (
-		<Link href={`/`}>
+		<Link href={`/courses-first-slug/${course?.instructor?._id}`}>
 			<Card className='group w-full'>
 				<CardContent className='relative h-56 w-full'>
 					<CustomImage src={course.previewImage} alt={course.title} />

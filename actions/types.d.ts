@@ -62,6 +62,7 @@ export interface GetAllCoursesParams {
 	pageSize?: number
 	searchQuery?: string
 	filter?: string
+	instructor?: string
 }
 
 export interface GetReviewParams {

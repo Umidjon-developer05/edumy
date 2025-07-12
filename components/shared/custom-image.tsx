@@ -19,7 +19,7 @@ function CustomImage({ alt, src, className }: Props) {
 			fill
 			sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
 			className={cn(
-				'object-cover duration-700 ease-in-out transition-all scale-100 blur-0 grayscale-0',
+				'object-cover duration-700 ease-in-out transition-all scale-100 blur-0 grayscale-0 rounded-t-md ',
 				loading && 'scale-110 blur-2xl grayscale',
 				className
 			)}

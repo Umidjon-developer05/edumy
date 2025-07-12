@@ -197,7 +197,7 @@ export const getDetailedCourse = cache(async (id: string) => {
 export const getAllCourses = async (params: GetAllCoursesParams) => {
 	try {
 		await connectToDatabase()
-		const { searchQuery, filter, page = 1, pageSize = 6 } = params
+		const { searchQuery, filter, page = 1, pageSize = 6, instructor } = params
 
 		const skipAmount = (page - 1) * pageSize
 
@@ -247,7 +247,7 @@ export const getAllCourses = async (params: GetAllCoursesParams) => {
 				break
 		}
 
-		const courses = await Course.find(query)
+		const courses = await Course.find(query, { instructor })
 			.select('previewImage title slug _id oldPrice currentPrice instructor')
 			.populate({
 				path: 'instructor',

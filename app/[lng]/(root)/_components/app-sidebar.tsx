@@ -55,7 +55,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 					<SidebarGroupContent>
 						<SidebarMenu className='space-y-2'>
 							{navLinks.map((link, index) => {
-								const isActive = pathname === link.route
+								const cleanPathname = pathname.replace(/^\/[a-z]{2}/, '')
+								const isActive = cleanPathname === link.route
+								console.log('isActive', isActive)
 								return (
 									<SidebarMenuItem key={link.route}>
 										<SidebarMenuButton
@@ -84,7 +86,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 											}}
 										>
 											<Link
-												href={link.route}
+												href={`/${link.route}`}
 												className='flex w-full items-center gap-3'
 											>
 												{link?.icon && (

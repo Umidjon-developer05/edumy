@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 async function Page({ searchParams }: SearchParamsProps) {
 	// const resultJSON = await getAllCourses({
 	// 	searchQuery: searchParams.q,
-	// 	filter: searchParams.filter,	
+	// 	filter: searchParams.filter,
 	// 	page: searchParams.page ? +searchParams.page : 1,
 	// })
 
