@@ -10,7 +10,6 @@ async function Page({ params }: LngParams) {
 	const { userId } = auth()
 	const { t } = await translation(params.lng)
 	const data = await getStudentCourse(userId!)
-	console.log(data)
 	return (
 		<>
 			<Header title={t('myCourses')} description={t('myCoursesDescription')} />
@@ -18,8 +17,10 @@ async function Page({ params }: LngParams) {
 			<div className='mt-4 grid grid-cols-3 gap-4 max-md:grid-cols-1'>
 				{data.allCourses.map((item, idx) => (
 					<ProgressCourseCard
+						key={String(item._id)}
 						course={item.course}
 						progress={item.progress}
+						_id={item._id}
 						isActive={item.isActive}
 						orderId={item.orderId}
 					/>

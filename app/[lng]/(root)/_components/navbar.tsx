@@ -19,7 +19,7 @@ function Navbar() {
 	const { cartsLength } = useCart()
 
 	return (
-		<div className='sticky top-0 z-40 flex h-16 shrink-0 items-center gap-2 border-b bg-background p-5 transition-[width,height] ease-linear'>
+		<div className='sticky top-0 z-40 flex h-16 shrink-0 items-center gap-2 border-b bg-background transition-[width,height] ease-linear sm:p-5'>
 			<div className='container mx-auto flex h-full max-w-7xl items-center justify-between '>
 				<div className='flex items-center gap-4'>
 					<SidebarTrigger className='-ml-1' />

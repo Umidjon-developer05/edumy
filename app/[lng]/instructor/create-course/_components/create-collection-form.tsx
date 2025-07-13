@@ -25,7 +25,6 @@ function CreateCollectionForm() {
 		reader.onload = async e => {
 			const result = e.target?.result as string
 			const refs = ref(storage, `collections/${uuidv4()}`)
-			console.log(refs)
 			const upload = uploadString(refs, result, 'data_url')
 				.then(() => getDownloadURL(refs))
 				.then(url => setPreviewImage(url))

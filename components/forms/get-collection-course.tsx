@@ -4,9 +4,7 @@ import { auth } from '@clerk/nextjs/server'
 
 export default async function CollectionPage() {
 	const { userId } = auth()
-	console.log('userId', userId)
 	const collection = await getCollectionById(userId || '')
-	console.log('collection', collection)
 	if (!collection) return <div>Collection not found</div>
 
 	return (

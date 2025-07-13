@@ -28,7 +28,6 @@ export const createCourse = async (
 	try {
 		await connectToDatabase()
 		const user = await User.findOne({ clerkId })
-		console.log('user', id)
 		await Course.create({
 			...data,
 			instructor: user._id,
@@ -486,7 +485,6 @@ export const getStudentCourse = async (clerkId: string) => {
 
 		return { allCourses, expenses }
 	} catch (error) {
-		console.log('🚨 getStudentCourse error:', error)
 		throw new Error('Something went wrong while getting student courses!')
 	}
 }

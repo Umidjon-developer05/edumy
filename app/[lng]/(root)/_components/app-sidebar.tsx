@@ -26,7 +26,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
 	return (
 		<Sidebar collapsible='icon' {...props}>
-			<SidebarHeader>
+			<SidebarHeader className='bg-background'>
 				<SidebarMenu>
 					<SidebarMenuItem>
 						<SidebarMenuButton
@@ -50,14 +50,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 				</SidebarMenu>
 			</SidebarHeader>
 
-			<SidebarContent className='px-2'>
+			<SidebarContent className='bg-background px-2'>
 				<SidebarGroup>
 					<SidebarGroupContent>
-						<SidebarMenu className='space-y-2'>
+						<SidebarMenu className='space-y-2 '>
 							{navLinks.map((link, index) => {
 								const cleanPathname = pathname.replace(/^\/[a-z]{2}/, '')
 								const isActive = cleanPathname === link.route
-								console.log('isActive', isActive)
 								return (
 									<SidebarMenuItem key={link.route}>
 										<SidebarMenuButton
@@ -72,7 +71,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                                                 group-data-[collapsible=icon]:justify-center
                                                 ${
 																									isActive
-																										? 'scale-105 bg-gradient-to-r from-sidebar-accent to-sidebar-accent/80 shadow-lg'
+																										? 'scale-105  bg-gradient-to-r from-sidebar-accent to-sidebar-accent/80 shadow-lg'
 																										: 'hover:bg-sidebar-accent/50'
 																								}
                                                 before:absolute before:inset-0 before:translate-x-[-100%] 
@@ -132,7 +131,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 				</SidebarGroup>
 			</SidebarContent>
 
-			<SidebarFooter className='mt-auto'>
+			<SidebarFooter className='mt-auto bg-background'>
 				<SidebarMenu>
 					<SidebarMenuItem>
 						<SidebarMenuButton

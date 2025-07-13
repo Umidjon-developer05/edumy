@@ -43,7 +43,7 @@ export const getBlogs = async () => {
 export const getDetailedBlog = cache(async (slug: string) => {
 	const query = gql`
 		query MyQuery($slug: String!) {
-			blog(where: { slug: $slug }) {
+			blogs(where: { slug: $slug }, locales: en) {
 				author {
 					name
 					image {
@@ -73,6 +73,8 @@ export const getDetailedBlog = cache(async (slug: string) => {
 		}
 	`
 
-	const { blog } = await request<{ blog: IBlog }>(graphqlAPI, query, { slug })
-	return blog
+	const { blogs } = await request<{ blogs: IBlog[] }>(graphqlAPI, query, {
+		slug,
+	})
+	return blogs?.[0]
 })

@@ -22,7 +22,6 @@ async function Page() {
 	const reviewData = await getAdminReviews({})
 	const instructorData = await getAdminInstructors({})
 	const balance = await getBalance()
-	console.log(courseData)
 	return (
 		<>
 			<Header title='Dashboard' description='Welcome to your dashboard' />

@@ -26,7 +26,6 @@ export const createPendingPurchase = async (data: PurchaseData) => {
 
 		const orderId = generateNumericId()
 		const userId = await User.findOne({ clerkId: data.userId })
-		console.log(userId)
 		await Purchase.create({
 			orderId,
 			user: userId?._id,

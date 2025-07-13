@@ -4,7 +4,6 @@ import { getAdminInstructors } from '@/actions/user.action'
 
 async function instructorTech() {
 	const instructorData = await getAdminInstructors({ pageSize: 4 })
-	console.log(instructorData)
 	return (
 		<div>
 			<Instructor

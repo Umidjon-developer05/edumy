@@ -4,7 +4,6 @@ interface Params {
 	params: { id: string }
 }
 function CollectionID({ params }: Params) {
-	console.log('params', params)
 	return (
 		<div>
 			<CourseFieldsForm id={params.id} />

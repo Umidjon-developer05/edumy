@@ -19,7 +19,6 @@ async function Page({ params }: LngParams) {
 	const { t } = await translation(params.lng)
 	const { userId } = auth()
 	const data = await getStudentCourse(userId!)
-	console.log(data)
 	return (
 		<>
 			<Header title={t('dashboard')} description={t('welcomeDashboard')} />

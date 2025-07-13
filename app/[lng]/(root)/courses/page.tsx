@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 }
 async function Page() {
 	const rawResult = await getCollectionAll()
-	console.log(rawResult)
 
 	const result = rawResult.map((item: any) => ({
 		title: item.title || '',
