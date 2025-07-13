@@ -5,34 +5,22 @@ import { Separator } from '@/components/ui/separator'
 import { useCart } from '@/hooks/use-cart'
 import useTranslate from '@/hooks/use-translate'
 import Image from 'next/image'
-import { loadStripe } from '@stripe/stripe-js'
-import { Elements } from '@stripe/react-stripe-js'
 import Checkout from './checkout'
-import { ICard } from '@/app.types'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+import type { z } from 'zod'
 import { couponSchema } from '@/lib/validation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
-import { applyCoupon } from '@/actions/payment.action'
 import FillLoading from '@/components/shared/fill-loading'
 import { X } from 'lucide-react'
 
-const stripePromise = loadStripe(
-	process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-)
-
-interface Props {
-	cards: ICard[]
-}
-function CheckoutElement({ cards }: Props) {
+function CheckoutElement() {
 	const [error, setError] = useState('')
 	const [loading, setLoading] = useState(false)
 	const [coupon, setCoupon] = useState(0)
-
 	const t = useTranslate()
 	const { totalPrice, taxes, carts } = useCart()
 
@@ -44,9 +32,14 @@ function CheckoutElement({ cards }: Props) {
 	const onSubmit = async ({ code }: z.infer<typeof couponSchema>) => {
 		setLoading(true)
 		try {
-			const res = await applyCoupon(code)
-			if (res.valid) {
-				setCoupon(res.percent_off)
+			// Simulate coupon validation - you can implement your own logic
+			if (code === 'DISCOUNT10') {
+				setCoupon(10)
+			} else if (code === 'DISCOUNT20') {
+				setCoupon(20)
+			} else {
+				setError(t('invalidCoupon'))
+				setTimeout(() => setError(''), 5000)
 			}
 		} catch (error) {
 			const result = error as Error
@@ -71,14 +64,10 @@ function CheckoutElement({ cards }: Props) {
 							<p className='text-sm text-muted-foreground'>
 								{t('fillDetails')}
 							</p>
-
-							<Elements stripe={stripePromise}>
-								<Checkout cards={cards} coupon={coupon} />
-							</Elements>
+							<Checkout coupon={coupon} />
 						</CardContent>
 					</Card>
 				</div>
-
 				<div className='flex flex-col space-y-3'>
 					<Card className='relative bg-gradient-to-b from-secondary to-background'>
 						{loading && <FillLoading />}
@@ -149,7 +138,6 @@ function CheckoutElement({ cards }: Props) {
 							<p className='text-sm text-muted-foreground'>
 								{t('reviewItems')}
 							</p>
-
 							<div className='mt-4 flex flex-col space-y-3'>
 								{carts.map(item => (
 									<div
@@ -159,7 +147,7 @@ function CheckoutElement({ cards }: Props) {
 										<div className='flex items-center gap-2'>
 											<div className='relative size-12 rounded-md bg-gray-300'>
 												<Image
-													src={item.previewImage}
+													src={item.previewImage || '/placeholder.svg'}
 													alt={item.title}
 													fill
 													className='object-cover'
@@ -169,7 +157,6 @@ function CheckoutElement({ cards }: Props) {
 												{item.title}
 											</h1>
 										</div>
-
 										<div className='flex items-center gap-2'>
 											<h1 className='font-space-grotesk text-sm font-bold'>
 												{item.currentPrice.toLocaleString('en-US', {
@@ -183,7 +170,6 @@ function CheckoutElement({ cards }: Props) {
 							</div>
 						</CardContent>
 					</Card>
-
 					<Card className='bg-gradient-to-t from-secondary to-background'>
 						<CardContent className='py-4'>
 							<h1 className='font-space-grotesk text-2xl font-bold'>
@@ -192,9 +178,7 @@ function CheckoutElement({ cards }: Props) {
 							<p className='text-sm text-muted-foreground'>
 								{t('controlsResult')}
 							</p>
-
 							<Separator className='my-3' />
-
 							<div className='flex items-center justify-between text-sm'>
 								<div className='font-space-grotesk font-bold'>
 									{t('subtotal')}
@@ -206,7 +190,6 @@ function CheckoutElement({ cards }: Props) {
 									})}
 								</div>
 							</div>
-
 							<div className='flex items-center justify-between text-sm'>
 								<div className='font-space-grotesk font-bold'>{t('taxes')}</div>
 								<div className='font-medium'>
@@ -216,7 +199,6 @@ function CheckoutElement({ cards }: Props) {
 									})}
 								</div>
 							</div>
-
 							<div className='flex items-center justify-between text-sm'>
 								<div className='font-space-grotesk font-bold'>{t('total')}</div>
 								<div className='font-medium'>

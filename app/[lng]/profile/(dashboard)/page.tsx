@@ -1,26 +1,30 @@
 import { getStudentCourse } from '@/actions/course.action'
-import { getCustomerCards } from '@/actions/customer.action'
-import CreditCard from '@/components/cards/credit.card'
+import { ICourse } from '@/app.types'
 import ProgressCourseCard from '@/components/cards/progress-course.card'
 import StatisticsCard from '@/components/cards/statistics.card'
 import Header from '@/components/shared/header'
 import { translation } from '@/i18n/server'
 import { LngParams } from '@/types'
 import { auth } from '@clerk/nextjs'
-import { Club, MonitorPlay } from 'lucide-react'
+import { MonitorPlay } from 'lucide-react'
 import { GrMoney } from 'react-icons/gr'
-
+interface ItemType {
+	course: ICourse
+	progress: number
+	_id: unknown
+	isActive: boolean // Add this property
+	orderId: string // Add this property
+}
 async function Page({ params }: LngParams) {
 	const { t } = await translation(params.lng)
 	const { userId } = auth()
 	const data = await getStudentCourse(userId!)
-	const cards = await getCustomerCards(userId!)
-
+	console.log(data)
 	return (
 		<>
 			<Header title={t('dashboard')} description={t('welcomeDashboard')} />
 
-			<div className='mt-4 grid grid-cols-3 gap-4 max-md:grid-cols-1'>
+			<div className='mt-4 grid grid-cols-2 gap-4 max-md:grid-cols-1'>
 				<StatisticsCard
 					label={t('myCourses')}
 					value={`${data.allCourses.length}`}
@@ -28,16 +32,11 @@ async function Page({ params }: LngParams) {
 				/>
 				<StatisticsCard
 					label={t('expenses')}
-					value={`${data.expenses.toLocaleString('en-US', {
+					value={`${data.expenses.toLocaleString('uz-UZ', {
 						style: 'currency',
-						currency: 'USD',
+						currency: 'UZS',
 					})}`}
 					Icon={GrMoney}
-				/>
-				<StatisticsCard
-					label={t('cards')}
-					value={`${cards.length}`}
-					Icon={Club}
 				/>
 			</div>
 
@@ -45,26 +44,17 @@ async function Page({ params }: LngParams) {
 
 			<div className='mt-4 grid grid-cols-3 gap-4 max-md:grid-cols-1'>
 				{data.allCourses
-					.map(item => (
+					.map((item: ItemType) => (
 						<ProgressCourseCard
-							key={item._id}
-							course={JSON.parse(JSON.stringify(item.course))}
+							key={String(item._id)}
+							course={item.course}
 							progress={item.progress}
+							_id={item._id}
+							isActive={item.isActive}
+							orderId={item.orderId}
 						/>
 					))
 					.splice(0, 3)}
-			</div>
-
-			<Header
-				title={t('bankAccounts')}
-				description={t('bankAccountsDescription')}
-			/>
-			<div className='mt-4 grid grid-cols-2 gap-8 max-md:grid-cols-1'>
-				{cards
-					.map(card => (
-						<CreditCard key={card.id} card={JSON.parse(JSON.stringify(card))} />
-					))
-					.splice(0, 2)}
 			</div>
 		</>
 	)

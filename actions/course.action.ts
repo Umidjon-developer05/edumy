@@ -57,6 +57,7 @@ export const getCourses = async (params: GetCoursesParams) => {
 				select: 'fullName picture clerkId',
 				model: User,
 			})
+			.lean()
 
 		const totalCourses = await Course.find({ instructor: _id }).countDocuments()
 		const isNext = totalCourses > skipAmount + courses.length
@@ -198,7 +199,7 @@ export const getAllCourses = async (params: GetAllCoursesParams) => {
 	try {
 		await connectToDatabase()
 		const { searchQuery, filter, page = 1, pageSize = 6, instructor } = params
-		console.log(instructor)
+
 		const skipAmount = (page - 1) * pageSize
 		const query: FilterQuery<typeof Course> = {}
 
@@ -451,27 +452,41 @@ export const getStudentCourse = async (clerkId: string) => {
 		await connectToDatabase()
 		const user = await User.findOne({ clerkId }).select('_id')
 
-		const purchasedCourses = await Purchase.find({ user: user._id }).populate({
-			path: 'course',
-			model: Course,
-			select: 'title price _id previewImage slug category currentPrice',
-		})
+		const purchasedCourses = await Purchase.find({ user: user._id })
+			.populate({
+				path: 'course',
+				model: Course,
+				select: 'title price _id previewImage slug category currentPrice',
+			})
+			.lean()
 
-		const courses = purchasedCourses.filter(el => el.course !== null)
+		const courses = purchasedCourses.filter(el => el.course)
 
 		const allCourses = []
 
 		for (const item of courses) {
-			const progress = await getProgressCourse(clerkId, item.course._id)
-			allCourses.push({ ...item._doc, progress })
+			let progress = await getProgressCourse(clerkId, item.course._id)
+			progress = isNaN(progress) ? 0 : progress
+
+			const isActive = item.isActive
+			const orderId = item.orderId
+			allCourses.push({
+				...item,
+				course: item.course,
+				progress,
+				isActive,
+				orderId,
+			}) // Ensure 'course' is present
 		}
 
-		const expenses = allCourses
-			.map(c => c.course.currentPrice)
-			.reduce((a, b) => a + b, 0)
+		const expenses = allCourses.reduce((acc, c) => {
+			const price = Number(c?.course?.currentPrice)
+			return !isNaN(price) ? acc + price : acc
+		}, 0)
 
 		return { allCourses, expenses }
 	} catch (error) {
+		console.log('🚨 getStudentCourse error:', error)
 		throw new Error('Something went wrong while getting student courses!')
 	}
 }

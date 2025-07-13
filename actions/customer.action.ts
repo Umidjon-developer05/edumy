@@ -66,23 +66,6 @@ export const detachPaymentMethod = async (
 	}
 }
 
-export const getCustomerCards = async (clerkId: string) => {
-	try {
-		await connectToDatabase()
-		const customer = await getCustomer(clerkId)
-
-		const paymentMethods = await stripe.paymentMethods.list({
-			customer: customer.id,
-			type: 'card',
-			limit: 10,
-		})
-
-		return paymentMethods.data
-	} catch (error) {
-		const result = error as Error
-		throw new Error(result.message)
-	}
-}
 
 export const getPaymentIntents = async (clerkId: string) => {
 	try {

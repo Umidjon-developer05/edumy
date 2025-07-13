@@ -22,7 +22,7 @@ async function Page() {
 	const reviewData = await getAdminReviews({})
 	const instructorData = await getAdminInstructors({})
 	const balance = await getBalance()
-
+	console.log(courseData)
 	return (
 		<>
 			<Header title='Dashboard' description='Welcome to your dashboard' />
@@ -40,9 +40,9 @@ async function Page() {
 				/>
 				<StatisticsCard
 					label='Total Sales'
-					value={`${(balance / 100).toLocaleString('en-US', {
+					value={`${(balance / 100).toLocaleString('uz-UZ', {
 						style: 'currency',
-						currency: 'USD',
+						currency: 'UZS',
 					})}`}
 					Icon={GrMoney}
 				/>

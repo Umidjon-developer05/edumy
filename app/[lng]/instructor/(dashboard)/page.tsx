@@ -11,12 +11,18 @@ import { formatAndDivideNumber } from '@/lib/utils'
 import { getReviews } from '@/actions/review.action'
 import { getRole } from '@/actions/user.action'
 import { redirect } from 'next/navigation'
+import { getPendingPurchases } from '@/actions/purchase.action'
 
 async function Page() {
 	const { userId } = auth()
 	const user = await getRole(userId!)
 
 	if (user.role !== 'instructor') return redirect('/')
+	const studentAll = await getPendingPurchases(userId!)
+	const totalSales = studentAll.reduce(
+		(acc: any, curr: any) => acc + curr.totalAmount,
+		0
+	)
 
 	const result = await getCourses({ clerkId: userId! })
 	const { reviews, totalReviews } = await getReviews({ clerkId: userId! })
@@ -33,7 +39,7 @@ async function Page() {
 				/>
 				<StatisticsCard
 					label='Total students'
-					value={formatAndDivideNumber(result.totalStudents)}
+					value={studentAll.length.toString()}
 					Icon={PiStudent}
 				/>
 				<StatisticsCard
@@ -43,9 +49,9 @@ async function Page() {
 				/>
 				<StatisticsCard
 					label='Total Sales'
-					value={result.totalEearnings.toLocaleString('en-US', {
+					value={totalSales.toLocaleString('uz-UZ', {
 						style: 'currency',
-						currency: 'USD',
+						currency: 'UZS',
 					})}
 					Icon={GrMoney}
 				/>
