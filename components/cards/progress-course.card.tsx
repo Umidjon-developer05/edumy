@@ -84,8 +84,8 @@ function ProgressCourseCard({ course, progress, isActive, orderId }: Props) {
 					<p className='mt-2 text-sm font-bold'>
 						👤 admin:{' '}
 						<span className='text-blue-600'>
-							<a href='https://t.me/Edumy_admin' target='_blank'>
-								@Edumy_admin
+							<a href='https://t.me/Edemy_admin' target='_blank'>
+								@Edemy_admin
 							</a>
 						</span>
 					</p>

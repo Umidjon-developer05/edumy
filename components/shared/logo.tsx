@@ -6,7 +6,7 @@ function Logo() {
 		<Link href={'/'} className='flex items-center gap-2'>
 			<Image src={'/logo.svg'} alt='logo' width={50} height={50} />
 			<h1 className='font-space-grotesk text-2xl font-bold sm:text-4xl'>
-				Edumy
+				Edemy
 			</h1>
 		</Link>
 	)

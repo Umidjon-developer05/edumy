@@ -28,27 +28,27 @@ export async function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-	metadataBase: new URL('https://edumy.vercel.app'), // URL o‘sha qolgan, agar domenni ham o‘zgartirsang, shu yerga yozamiz
-	title: 'Edumy Academy | Onlayn taʼlim platformasi',
+	metadataBase: new URL('https://Edemy.vercel.app'), // URL o‘sha qolgan, agar domenni ham o‘zgartirsang, shu yerga yozamiz
+	title: 'Edemy Academy | Onlayn taʼlim platformasi',
 	description:
-		'Edumy Academy — bu zamonaviy onlayn taʼlim platformasi. Ingliz tili, rus tili, dasturlash, dizayn, 3D, UI/UX va boshqa kurslar bir joyda jamlangan.',
-	authors: [{ name: 'Edumy Academy', url: 'https://edumy.vercel.app' }],
+		'Edemy Academy — bu zamonaviy onlayn taʼlim platformasi. Ingliz tili, rus tili, dasturlash, dizayn, 3D, UI/UX va boshqa kurslar bir joyda jamlangan.',
+	authors: [{ name: 'Edemy Academy', url: 'https://Edemy.vercel.app' }],
 	icons: { icon: '/logo.svg' },
 	openGraph: {
-		title: 'Edumy Academy | Onlayn taʼlim platformasi',
+		title: 'Edemy Academy | Onlayn taʼlim platformasi',
 		description:
-			'Edumy Academy — bu zamonaviy onlayn taʼlim platformasi. Ingliz tili, rus tili, dasturlash, dizayn, 3D, UI/UX va boshqa kurslar bir joyda jamlangan.',
+			'Edemy Academy — bu zamonaviy onlayn taʼlim platformasi. Ingliz tili, rus tili, dasturlash, dizayn, 3D, UI/UX va boshqa kurslar bir joyda jamlangan.',
 		type: 'website',
-		url: 'https://edumy.vercel.app',
+		url: 'https://Edemy.vercel.app',
 		locale: 'uz_UZ',
 		images:
 			'https://858yhjxxl1.ufs.sh/f/IyD1CkboyeparKtkXmnJRVd6oMTje2IK7nHhqv30aBUN4mrG',
 		countryName: 'Uzbekistan',
-		siteName: 'Edumy Academy',
+		siteName: 'Edemy Academy',
 		emails: 'umidjongafforov175@gmail.com',
 	},
 	keywords:
-		'Edumy Academy, Onlayn kurslar, Ingliz tili, Rus tili, Dasturlash, NextJS, Dizayn, UI/UX, 3D Max, Zamonaviy taʼlim, Startup loyihalar, Kurslar platformasi',
+		'Edemy Academy, Onlayn kurslar, Ingliz tili, Rus tili, Dasturlash, NextJS, Dizayn, UI/UX, 3D Max, Zamonaviy taʼlim, Startup loyihalar, Kurslar platformasi',
 }
 
 interface Props extends ChildProps {
