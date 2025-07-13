@@ -17,7 +17,7 @@ async function Page({ searchParams }: SearchParamsProps) {
 			<div className='mt-4 grid grid-cols-3 gap-4'>
 				{result.courses.map(item => (
 					<InstructorCourseCard
-						key={item._id}
+						key={String(item._id)}
 						course={JSON.parse(JSON.stringify(item))}
 					/>
 				))}
