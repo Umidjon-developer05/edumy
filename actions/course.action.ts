@@ -469,12 +469,14 @@ export const getStudentCourse = async (clerkId: string) => {
 
 			const isActive = item.isActive
 			const orderId = item.orderId
+			const _id = item?._id
 			allCourses.push({
 				...item,
 				course: item.course,
 				progress,
 				isActive,
 				orderId,
+				_id,
 			}) // Ensure 'course' is present
 		}
 

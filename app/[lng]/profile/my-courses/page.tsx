@@ -17,7 +17,7 @@ async function Page({ params }: LngParams) {
 			<div className='mt-4 grid grid-cols-3 gap-4 max-md:grid-cols-1'>
 				{data.allCourses.map((item, idx) => (
 					<ProgressCourseCard
-						key={String(item._id)}
+						key={idx}
 						course={item.course}
 						progress={item.progress}
 						_id={item._id}
