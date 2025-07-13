@@ -29,25 +29,25 @@ export async function generateStaticParams() {
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://startup.sammi.ac'), // URL o‘sha qolgan, agar domenni ham o‘zgartirsang, shu yerga yozamiz
-	title: 'Umidjon Academy | Onlayn taʼlim platformasi',
+	title: 'Edumy Academy | Onlayn taʼlim platformasi',
 	description:
-		'Umidjon Academy — bu zamonaviy onlayn taʼlim platformasi. Ingliz tili, rus tili, dasturlash, dizayn, 3D, UI/UX va boshqa kurslar bir joyda jamlangan.',
-	authors: [{ name: 'Umidjon Academy', url: 'https://startup.sammi.ac' }],
+		'Edumy Academy — bu zamonaviy onlayn taʼlim platformasi. Ingliz tili, rus tili, dasturlash, dizayn, 3D, UI/UX va boshqa kurslar bir joyda jamlangan.',
+	authors: [{ name: 'Edumy Academy', url: 'https://startup.sammi.ac' }],
 	icons: { icon: '/logo.svg' },
 	openGraph: {
-		title: 'Umidjon Academy | Onlayn taʼlim platformasi',
+		title: 'Edumy Academy | Onlayn taʼlim platformasi',
 		description:
-			'Umidjon Academy — bu zamonaviy onlayn taʼlim platformasi. Ingliz tili, rus tili, dasturlash, dizayn, 3D, UI/UX va boshqa kurslar bir joyda jamlangan.',
+			'Edumy Academy — bu zamonaviy onlayn taʼlim platformasi. Ingliz tili, rus tili, dasturlash, dizayn, 3D, UI/UX va boshqa kurslar bir joyda jamlangan.',
 		type: 'website',
 		url: 'https://startup.sammi.ac',
 		locale: 'uz_UZ',
 		images: 'https://media.graphassets.com/f4jkBWQ6SVaKwySKRNQT',
 		countryName: 'Uzbekistan',
-		siteName: 'Umidjon Academy',
+		siteName: 'Edumy Academy',
 		emails: 'info@sammi.ac',
 	},
 	keywords:
-		'Umidjon Academy, Onlayn kurslar, Ingliz tili, Rus tili, Dasturlash, NextJS, Dizayn, UI/UX, 3D Max, Zamonaviy taʼlim, Startup loyihalar, Kurslar platformasi',
+		'Edumy Academy, Onlayn kurslar, Ingliz tili, Rus tili, Dasturlash, NextJS, Dizayn, UI/UX, 3D Max, Zamonaviy taʼlim, Startup loyihalar, Kurslar platformasi',
 }
 
 interface Props extends ChildProps {

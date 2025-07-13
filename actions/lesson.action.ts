@@ -117,6 +117,7 @@ export const completeLesson = async (
 
 		revalidatePath(path)
 	} catch (error) {
+		console.log(error)
 		throw new Error('Something went wrong!')
 	}
 }
@@ -135,8 +136,11 @@ export const uncompleteLesson = async (lessonId: string, path: string) => {
 export const getLesson = async (id: string) => {
 	try {
 		await connectToDatabase()
-		return await Lesson.findById(id).select('title content videoUrl')
+		const lesson = await Lesson.findById(id).select('title content videoUrl')
+		if (!lesson) return null
+		return lesson
 	} catch (error) {
+		console.error('❌ getLesson ERROR:', error)
 		throw new Error('Something went wrong!')
 	}
 }
@@ -169,6 +173,7 @@ export const getNextLesson = async (lessonId: string, courseId: string) => {
 			sectionId: section._id.toString(),
 		}
 	} catch (error) {
+		console.log(error)
 		throw new Error('Something went wrong!')
 	}
 }
