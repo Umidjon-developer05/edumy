@@ -28,23 +28,24 @@ export async function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-	metadataBase: new URL('https://startup.sammi.ac'), // URL o‘sha qolgan, agar domenni ham o‘zgartirsang, shu yerga yozamiz
+	metadataBase: new URL('https://edumy.vercel.app'), // URL o‘sha qolgan, agar domenni ham o‘zgartirsang, shu yerga yozamiz
 	title: 'Edumy Academy | Onlayn taʼlim platformasi',
 	description:
 		'Edumy Academy — bu zamonaviy onlayn taʼlim platformasi. Ingliz tili, rus tili, dasturlash, dizayn, 3D, UI/UX va boshqa kurslar bir joyda jamlangan.',
-	authors: [{ name: 'Edumy Academy', url: 'https://startup.sammi.ac' }],
+	authors: [{ name: 'Edumy Academy', url: 'https://edumy.vercel.app' }],
 	icons: { icon: '/logo.svg' },
 	openGraph: {
 		title: 'Edumy Academy | Onlayn taʼlim platformasi',
 		description:
 			'Edumy Academy — bu zamonaviy onlayn taʼlim platformasi. Ingliz tili, rus tili, dasturlash, dizayn, 3D, UI/UX va boshqa kurslar bir joyda jamlangan.',
 		type: 'website',
-		url: 'https://startup.sammi.ac',
+		url: 'https://edumy.vercel.app',
 		locale: 'uz_UZ',
-		images: 'https://media.graphassets.com/f4jkBWQ6SVaKwySKRNQT',
+		images:
+			'https://858yhjxxl1.ufs.sh/f/IyD1CkboyeparKtkXmnJRVd6oMTje2IK7nHhqv30aBUN4mrG',
 		countryName: 'Uzbekistan',
 		siteName: 'Edumy Academy',
-		emails: 'info@sammi.ac',
+		emails: 'umidjongafforov175@gmail.com',
 	},
 	keywords:
 		'Edumy Academy, Onlayn kurslar, Ingliz tili, Rus tili, Dasturlash, NextJS, Dizayn, UI/UX, 3D Max, Zamonaviy taʼlim, Startup loyihalar, Kurslar platformasi',
