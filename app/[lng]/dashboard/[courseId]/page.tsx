@@ -8,8 +8,8 @@ interface Props {
 }
 async function Page({ params: { courseId, lng } }: Props) {
 	const { userId } = auth()
+	if (!userId) return redirect(`/`)
 	const isPurchase = await getIsPurchase(userId!, courseId)
-
 	if (!isPurchase) return redirect(`/course/${courseId}`)
 
 	const { lessonId, sectionId } = await getLastLesson(userId!, courseId)

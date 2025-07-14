@@ -3,6 +3,9 @@ import { translation } from '@/i18n/server'
 import parse from 'html-react-parser'
 import VideoLesson from './_components/video-lesson'
 import MobileCurriculum from './_components/mobile-curriculum'
+import { auth } from '@clerk/nextjs'
+import { redirect } from 'next/navigation'
+import { getIsPurchase } from '@/actions/course.action'
 
 interface Props {
 	params: { lessonId: string; courseId: string; lng: string }
@@ -10,7 +13,10 @@ interface Props {
 async function Page({ params: { courseId, lessonId, lng } }: Props) {
 	const { t } = await translation(lng)
 	const lesson = await getLesson(lessonId)
-
+	const { userId } = auth()
+	if (!userId) return redirect(`/`)
+	const isPurchase = await getIsPurchase(userId!, courseId)
+	if (!isPurchase) return redirect(`/course/${courseId}`)
 	return (
 		<>
 			<VideoLesson lesson={JSON.parse(JSON.stringify(lesson))} />

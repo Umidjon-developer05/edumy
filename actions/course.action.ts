@@ -410,8 +410,10 @@ export const getIsPurchase = async (clerkId: string, courseId: string) => {
 		const isPurchased = await Purchase.findOne({
 			user: user._id,
 			course: courseId,
+			isActive: true,
+			status: 'completed',
 		})
-
+		console.log(isPurchased, 'asas')
 		return !!isPurchased
 	} catch (error) {
 		throw new Error('Something went wrong while getting purchased courses!')

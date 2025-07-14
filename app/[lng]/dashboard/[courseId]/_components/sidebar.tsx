@@ -3,6 +3,7 @@ import { Progress } from '@/components/ui/progress'
 import { translation } from '@/i18n/server'
 import { auth } from '@clerk/nextjs'
 import Sections from './sections'
+import { redirect } from 'next/navigation'
 
 interface Props {
 	courseId: string
@@ -11,6 +12,7 @@ interface Props {
 async function Sidebar({ courseId, lng }: Props) {
 	const { t } = await translation(lng)
 	const { userId } = auth()
+	if (!userId) return redirect(`/`)
 	const { course, progressPercentage, sections } = await getDashboardCourse(
 		userId!,
 		courseId
