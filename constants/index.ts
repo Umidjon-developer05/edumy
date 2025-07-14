@@ -283,6 +283,7 @@ export const adminNavLinks = [
 	{ label: 'Dashboard', route: '/admin', icon: GaugeCircle },
 	{ label: 'All courses', route: '/admin/all-courses', icon: MonitorPlay },
 	{ label: 'Instructors', route: '/admin/instructors', icon: User },
+	{ label: 'Students', route: '/admin/student', icon: User2 },
 	{ label: 'Reviews', route: '/admin/reviews', icon: MessageSquareMore },
 	{ label: 'Notifications', route: '/admin/notifications', icon: Bell },
 ]

@@ -30,16 +30,16 @@ function CourseCard(course: ICourse) {
 							</p>
 						</div>
 
-						<div className='flex gap-2'>
+						<div className='flex flex-col gap-2'>
 							<div className='self-start font-space-grotesk text-xs text-muted-foreground line-through'>
-								{course.oldPrice.toLocaleString('en-US', {
+								{course.oldPrice.toLocaleString('uz-UZ', {
 									style: 'currency',
-									currency: 'USD',
+									currency: 'UZS',
 								})}
 							</div>
 							<div className='font-space-grotesk text-sm font-bold'>
-								{course.currentPrice.toLocaleString('en-US', {
-									currency: 'USD',
+								{course.currentPrice.toLocaleString('uz-UZ', {
+									currency: 'UZS',
 									style: 'currency',
 								})}
 							</div>

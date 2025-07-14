@@ -1,5 +1,5 @@
 import { getAdminCourses } from '@/actions/course.action'
-import { getBalance } from '@/actions/payment.action'
+import { getPendingPurchases } from '@/actions/purchase.action'
 import { getAdminReviews } from '@/actions/review.action'
 import { getAdminInstructors, getRole } from '@/actions/user.action'
 import AdminCourseCard from '@/components/cards/admin-course.card'
@@ -17,11 +17,14 @@ async function Page() {
 	const user = await getRole(userId!)
 
 	if (!user.isAdmin) return redirect('/')
-
+	const studentAll = await getPendingPurchases(userId!)
+	const totalSales = studentAll.reduce(
+		(acc: any, curr: any) => acc + curr.totalAmount,
+		0
+	)
 	const courseData = await getAdminCourses({})
 	const reviewData = await getAdminReviews({})
 	const instructorData = await getAdminInstructors({})
-	const balance = await getBalance()
 	return (
 		<>
 			<Header title='Dashboard' description='Welcome to your dashboard' />
@@ -39,7 +42,7 @@ async function Page() {
 				/>
 				<StatisticsCard
 					label='Total Sales'
-					value={`${(balance / 100).toLocaleString('uz-UZ', {
+					value={`${totalSales.toLocaleString('uz-UZ', {
 						style: 'currency',
 						currency: 'UZS',
 					})}`}

@@ -83,6 +83,21 @@ export const getPendingPurchases = async (userId: string) => {
 		throw new Error(result.message)
 	}
 }
+export const getAllPurchases = async () => {
+	try {
+		await connectToDatabase()
+
+		const purchases = await Purchase.find()
+			.populate('course', 'title previewImage currentPrice _id ')
+			.populate('user', 'fullName _id picture email')
+			.lean()
+
+		return JSON.parse(JSON.stringify(purchases))
+	} catch (error) {
+		const result = error as Error
+		throw new Error(result.message)
+	}
+}
 
 export const getPurchaseByOrderId = async (orderId: string) => {
 	try {

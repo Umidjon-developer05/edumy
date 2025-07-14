@@ -54,20 +54,20 @@ function InstructorReviewCard({ review, isProfile, isAdmin }: Props) {
 					<Avatar>
 						<AvatarImage src={review.user.picture} />
 						<AvatarFallback className='uppercase'>
-							{review.user.fullName[0]}
+							{review?.user.fullName[0]}
 						</AvatarFallback>
 					</Avatar>
 
 					<div className='flex flex-col'>
 						<div className='font-space-grotesk text-sm'>
-							{review.user.fullName}{' '}
+							{review?.user.fullName}{' '}
 							<span className='text-xs text-muted-foreground'>
 								{formatDistanceToNow(new Date(review.createdAt))} ago
 							</span>
 						</div>
 						<ReactStars value={review.rating} edit={false} color2='#E59819' />
 						<div className='font-space-grotesk font-bold'>
-							{review.course.title}
+							{review?.course?.title}
 						</div>
 						<p className='text-sm text-muted-foreground'>{review.data}</p>
 					</div>
