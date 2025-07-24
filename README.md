@@ -6,7 +6,7 @@
 
 <h2>🚀 Demo</h2>
 
-[https://www.sammi-praktikum.uz](https://www.sammi-praktikum.uz)
+
 
 <h2>🧐 Features</h2>
 
