@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app'
 import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
-	apiKey: 'AIzaSyCYmasMdoGWiyw5A6E9n7epqBYxtkVFYnY',
-	authDomain: 'Edemy-course-platform.firebaseapp.com',
-	projectId: 'Edemy-course-platform',
-	storageBucket: 'Edemy-course-platform.firebasestorage.app',
-	messagingSenderId: '642631693516',
-	appId: '1:642631693516:web:c3724bf62790c66627be69',
+	  apiKey: "AIzaSyDOMSC7nbSTkkD4O2z4gs48idTjLrdooxw",
+  authDomain: "edemy-courses.firebaseapp.com",
+  projectId: "edemy-courses",
+  storageBucket: "edemy-courses.firebasestorage.app",
+  messagingSenderId: "713676642849",
+  appId: "1:713676642849:web:903013b366ce99473f6160",
 }
 
 const app = initializeApp(firebaseConfig)
