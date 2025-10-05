@@ -13,7 +13,7 @@ function Layout({ children }: ChildProps) {
 
   return (
     <SidebarProvider ref={sidebarRef}>
-      <AppSidebar className="border" />
+      <AppSidebar />
       <SidebarInset>
         <Navbar />
         <main>{children}</main>

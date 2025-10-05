@@ -25,8 +25,16 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { state } = useSidebar();
 
   return (
-    <Sidebar collapsible="icon" variant="floating" className="border" {...props}>
-      <SidebarHeader className="bg-background">
+    <Sidebar
+      collapsible="icon"
+      className="rounded-md"
+      variant="floating"
+      {...props}
+    >
+      <SidebarHeader
+        className=" text-white   bg-gradient-to-r from-slate-950/90 to-slate-900/80
+  backdrop-blur border-b border-white/10 rounded-t-md "
+      >
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
@@ -50,7 +58,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent className="bg-background ">
+      <SidebarContent
+        className=" text-white   bg-gradient-to-r from-slate-950/90 to-slate-900/80
+  backdrop-blur border-b border-white/10 z-50"
+      >
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu className="space-y-2 ">
@@ -131,7 +142,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="mt-auto bg-background">
+      <SidebarFooter
+        className="mt-auto text-white   bg-gradient-to-r from-slate-950/90 to-slate-900/80
+  backdrop-blur border-b border-white/10  rounded-b-md"
+      >
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
